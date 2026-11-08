@@ -31,7 +31,7 @@ Mosbach, Andriushchenko, Klakow. *On the Stability of Fine-tuning BERT: Misconce
 
 ## 3. Пилот оригинального кода
 
-**Пилот успешно завершён 08.11.2026 в 23:58:19 MSK, exit code 0:** seed 0, [rte-pilot-original.yaml](configs/rte-pilot-original.yaml), BERT-large, **20 эпох / 3120 шагов**, batch 16, FP32. Итоговая dev accuracy восстановленного best-dev checkpoint — **70.40% (195/277)**; выбран checkpoint шага **2236**. Accuracy последнего состояния на шаге 3120 — **68.23% (189/277)**. Время процесса — **3 ч 28 мин 57 с**. [Машиночитаемый результат](results/pilot/original-seed0/result.json), [сводка](results/pilot/original-seed0/summary.md), [полные оценки](results/pilot/original-seed0/eval_results.tsv). Это один пилотный seed, не оценка среднего или разброса основной серии. Промежуточные снимки сохранены отдельно.
+**Пилот успешно завершён:** seed 0, [rte-pilot-original.yaml](configs/rte-pilot-original.yaml), BERT-large, **20 эпох / 3120 шагов**, batch 16, FP32. Итоговая dev accuracy восстановленного best-dev checkpoint — **70.40% (195/277)**; выбран checkpoint шага **2236**. Accuracy последнего состояния на шаге 3120 — **68.23% (189/277)**. Время процесса — **3 ч 28 мин 57 с**. [Машиночитаемый результат](results/pilot/original-seed0/result.json), [сводка](results/pilot/original-seed0/summary.md), [полные оценки](results/pilot/original-seed0/eval_results.tsv). Это один пилотный seed, не оценка среднего или разброса основной серии. Промежуточные снимки сохранены отдельно.
 
 | Поле | Зафиксировано |
 | --- | --- |
