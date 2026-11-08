@@ -1,0 +1,23 @@
+# Environments and Python cache
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.idea/
+
+# Local credentials and settings
+.env
+.env.*
+!.env.example
+
+# Downloaded data, model caches, checkpoints and bulky logs
+data/
+datasets/
+.cache/
+checkpoints/
+pre-trained-transformers/
+wandb/
+tb-logs/
+
+# Keep small exported logs and metadata under results/ in Git.
