@@ -1,0 +1,127 @@
+# Pre-registration plan, not a config accepted by the upstream training CLI.
+# Main experiments have not been launched. Budget approved: 200 RTX 3070 Ti hours.
+study: c3-bert-finetuning-stability
+status: preregistration_draft_before_main_runs
+upstream:
+  url: https://github.com/uds-lsv/bert-stable-fine-tuning
+  commit: 3cf27e8667aee9d1c822d747c63ce331b231f283
+data:
+  task: rte
+  train_examples: 2490
+  dev_examples: 277
+  train: data/RTE/train.tsv
+  dev: data/RTE/dev.tsv
+  use_test: false
+seed_sets:
+  pilot: [0]
+  core: &core [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25]
+  ablation: &ablation [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  scaling: &scaling [1, 2, 3, 4, 5]
+common:
+  model: bert-large-uncased
+  optimizer: upstream_mAdamW
+  learning_rate: 0.00002
+  warmup_fraction: 0.1
+  schedule: warmup-linear
+  adam_beta1: 0.9
+  adam_beta2: 0.999
+  adam_epsilon: 0.000001
+  weight_decay: 0.01
+  no_decay_parameters: [bias, LayerNorm.weight]
+  max_grad_norm: 1.0
+  local_normalization: false
+  train_batch_size: 16
+  gradient_accumulation_steps: 1
+  precision: fp32
+  max_seq_length: 128
+  do_lower_case: true
+  pooler: cls
+  pooler_activation: tanh
+  re_init_pooler: false
+  classifier_init_std: 0.02
+  hidden_dropout_prob: 0.1
+  attention_probs_dropout_prob: 0.1
+  classifier_dropout_prob: 0.1
+  eval_every_optimizer_steps: 52
+  eval_at_epoch_end: true
+  eval_before_training: true
+  eval_batch_size: 100
+  drop_last_eval: false
+  seed_all_rngs: true
+experiments:
+  A:
+    epochs: 3
+    steps: 468
+    correct_bias: false
+    seeds: *core
+    source_config: pooler-bert-large-uncased_bsz_16_lr_2e-05_adamW.yaml
+    original_checkpoint_rule: last
+  B:
+    epochs: 20
+    steps: 3120
+    correct_bias: true
+    seeds: *core
+    source_config: pooler-bert-large-uncased_bsz_16_lr_2e-05_adamW_bias-correct_early-stopping_20.yaml
+    original_checkpoint_rule: best_dev
+  C:
+    epochs: 3
+    steps: 468
+    correct_bias: true
+    seeds: *ablation
+    controlled_checkpoint_rule: last
+  D:
+    epochs: 20
+    steps: 3120
+    correct_bias: false
+    seeds: *ablation
+    controlled_checkpoint_rule: last
+  E_A:
+    model: bert-base-uncased
+    tokenizer: bert-base-uncased
+    epochs: 3
+    correct_bias: false
+    seeds: *scaling
+    controlled_checkpoint_rule: last
+  E_B:
+    model: bert-base-uncased
+    tokenizer: bert-base-uncased
+    epochs: 20
+    correct_bias: true
+    seeds: *scaling
+    controlled_checkpoint_rule: last
+planned_instrumentation:
+  status: not_yet_implemented_for_main_runs
+  tracker: wandb_offline_with_local_exports
+  retain_best_and_last: true
+  retain_dev_predictions: true
+  gradients_before_clipping: true
+  large_encoder_layers: [0, 11, 23]
+  base_encoder_layers: [0, 5, 11]
+  first_gradient_steps: 100
+  later_gradient_interval: 50
+  full_train_nll_at_end: true
+statistics:
+  metric: dev_accuracy_percent
+  sample_std_ddof: 1
+  bootstrap: paired_seed_percentile
+  bootstrap_samples: 10000
+  bootstrap_seed: 2026
+  mean_tolerance_pp: 3.0
+  std_tolerance_pp: 2.0
+  stability_ratio_target: 0.75
+  optimization_failure_full_train_nll: 0.65
+budget:
+  hardware: NVIDIA GeForce RTX 3070 Ti 8 GiB
+  approved_gpu_hours: 200
+  upper_estimates_hours:
+    pilot: 4
+    core: 115
+    ablation: 46
+    scaling: 4.75
+    extra_evaluation: 2
+    reserve: 28.25
+  cuts_in_order:
+    - reduce_scaling_to_first_3_seeds
+    - reduce_ablation_to_first_5_seeds
+    - reduce_core_to_first_20_seeds_before_launch
+    - agree_revised_scope_with_instructors

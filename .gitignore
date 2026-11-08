@@ -19,5 +19,16 @@ checkpoints/
 pre-trained-transformers/
 wandb/
 tb-logs/
+.runtime/
+downloads/
+model-cache/
+results/pilot/outputs/
+
+# Live process output and local operational records; commit frozen summaries/TSV.
+results/pilot/*.stdout.log
+results/pilot/*.stderr.log
+results/pilot/last-launch.json
+results/pilot/bootstrap.log
+results/pilot/offline-install.log
 
 # Keep small exported logs and metadata under results/ in Git.

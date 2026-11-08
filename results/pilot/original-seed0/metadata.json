@@ -1,0 +1,28 @@
+{
+  "status": "running",
+  "started_at_utc": "2026-11-08T17:29:21.877879+00:00",
+  "pid": 16140,
+  "seed": 0,
+  "upstream": "C:\\Users\\n7210\\PycharmProjects\\PythonProject\\bert-stable-fine-tuning",
+  "config": "C:\\Users\\n7210\\PycharmProjects\\ml\\c3-bert-stability\\configs\\rte-pilot-original.yaml",
+  "config_sha256": "b6243cfaa1822d1f9dea95eaebad3198219e86f86b841b5d4874f1366a3850d8",
+  "launcher_sha256": "45ea42193103e05a3ed886cb6f8d4c89efb65eb0f3c82b26240fc549a08e1fc3",
+  "python": "3.8.10 (tags/v3.8.10:3d8993a, May  3 2021, 11:48:03) [MSC v.1928 64 bit (AMD64)]",
+  "platform": "Windows-10-10.0.26200-SP0",
+  "torch": "1.13.1+cu117",
+  "transformers": "2.5.1",
+  "transformers_path": "C:\\Users\\n7210\\PycharmProjects\\PythonProject\\bert-stable-fine-tuning\\src\\transformers\\__init__.py",
+  "cuda_runtime": "11.7",
+  "cudnn": 8500,
+  "gpu": "NVIDIA GeForce RTX 3070 Ti",
+  "adaptations": [
+    "Portable Python 3.8 / PyTorch 1.13.1 environment",
+    "Local data and weight paths",
+    "Short output directory names via launcher; no training algorithm changes"
+  ],
+  "data_sha256": {
+    "train.tsv": "41e3a9b063433392343fad9e962cf2f58b681c78d8f71592f4186f0837246c5c",
+    "dev.tsv": "80230dfa1347282e7b532b06a1004a76a710087541189bf874223ddf0e3819fb"
+  },
+  "upstream_sha": "3cf27e8667aee9d1c822d747c63ce331b231f283"
+}

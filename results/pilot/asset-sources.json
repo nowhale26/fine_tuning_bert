@@ -1,0 +1,21 @@
+{
+  "upstream": "C:\\Users\\n7210\\PycharmProjects\\PythonProject\\bert-stable-fine-tuning",
+  "upstream_sha": "3cf27e8667aee9d1c822d747c63ce331b231f283",
+  "original_config": "C:\\Users\\n7210\\PycharmProjects\\PythonProject\\bert-stable-fine-tuning\\examples\\bert_stable_fine_tuning\\configs\\rte\\pooler-bert-large-uncased_bsz_16_lr_2e-05_adamW_bias-correct_early-stopping_20.yaml",
+  "python": "https://www.python.org/ftp/python/3.8.10/python-3.8.10-embed-amd64.zip",
+  "rte": "https://dl.fbaipublicfiles.com/glue/data/RTE.zip",
+  "weights_original": "https://s3.amazonaws.com/models.huggingface.co/bert/bert-large-uncased-pytorch_model.bin",
+  "weights_mirror": "https://huggingface.co/google-bert/bert-large-uncased/resolve/6da4b6a26a1877e173fca3225479512db81a5e5b/pytorch_model.bin",
+  "weights_expected_sha256": "be24b235c46198938ac269939f8341ae479f2150dc278a342a3ffddefad35434",
+  "path_replacements": {
+    "/datasets/GLUE/rte": "./data/RTE",
+    "/logfiles/stable-fine-tuning/rte": "./results/pilot/outputs/logs",
+    "/checkpoints/stable-fine-tuning/rte": "./results/pilot/outputs/checkpoints",
+    "/tb-logs/stable-fine-tuning/rte": "./results/pilot/outputs/tb",
+    "/wandb-logs/stable-fine-tuning/rte": "./results/pilot/outputs/wandb",
+    "/pre-trained-transformers": "./model-cache",
+    "model_name_or_path: bert-large-uncased": "model_name_or_path: ./model-cache/bert-large-uncased",
+    "config_name: bert-large-uncased": "config_name: ./model-cache/bert-large-uncased",
+    "tokenizer_name: bert-large-uncased": "tokenizer_name: ./model-cache/bert-large-uncased"
+  }
+}
