@@ -1,0 +1,17 @@
+{
+  "status": "completed",
+  "seed": 0,
+  "epochs": 20,
+  "optimizer_steps": 3120,
+  "dev_examples": 277,
+  "selected_checkpoint": "best_dev",
+  "selected_checkpoint_step": 2236,
+  "final_reloaded_checkpoint_accuracy": 0.703971119133574,
+  "last_trajectory_accuracy": 0.6823104693140795,
+  "elapsed_seconds": 12536.9380517,
+  "finished_at_utc": "2026-11-08T20:58:19.684191+00:00",
+  "peak_allocated_bytes": 11172861952,
+  "peak_reserved_bytes": 14881390592,
+  "upstream_sha": "3cf27e8667aee9d1c822d747c63ce331b231f283",
+  "is_multi_seed_result": false
+}

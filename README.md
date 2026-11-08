@@ -6,7 +6,7 @@
 
 ## Текущий пилот и просмотр прогресса
 
-08.11.2026 в 20:29 MSK запущен `original-seed0`: BERT-large, RTE, 20 эпох, seed 0, batch 16, accumulation 1, FP32, RTX 3070 Ti 8 GiB. На момент записи первые шаги прошли, итоговый результат ожидается. Это запуск с адаптациями окружения и путей, подробно описанными в журнале решений.
+`original-seed0` завершён 08.11.2026 в 23:58:19 MSK, exit code 0: BERT-large, RTE, 20 эпох / 3120 шагов, seed 0, batch 16, accumulation 1, FP32, RTX 3070 Ti 8 GiB. Итоговая dev accuracy восстановленного best-dev checkpoint — **70.40%**, последнего состояния — **68.23%**; время — **3 ч 28 мин 57 с**. Это запуск с адаптациями окружения и путей, подробно описанными в журнале решений. [Результат JSON](results/pilot/original-seed0/result.json), [оценки TSV](results/pilot/original-seed0/eval_results.tsv), [обучение TSV](results/pilot/original-seed0/train_results.tsv).
 
 В PowerShell из этой папки:
 

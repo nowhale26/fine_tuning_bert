@@ -31,7 +31,7 @@ Mosbach, Andriushchenko, Klakow. *On the Stability of Fine-tuning BERT: Misconce
 
 ## 3. Пилот оригинального кода
 
-Запущен seed 0 с [rte-pilot-original.yaml](configs/rte-pilot-original.yaml): BERT-large, 20 эпох, batch 16, FP32. На **08.11.2026 23:51 MSK** сохранён [снимок измерений](results/pilot/original-seed0/snapshots/20261108T205148Z/README.md): залогировано **3040/3120 шагов (97.4%)**, последняя dev accuracy — **68.59% на шаге 3016**, лучшая наблюдавшаяся — **70.40% на шаге 2236**. Это измерения на указанных шагах; итоговую оценку восстановленного checkpoint и время полного запуска добавим после его завершения. Начальная оценка до обучения не считается обученным результатом.
+**Пилот успешно завершён 08.11.2026 в 23:58:19 MSK, exit code 0:** seed 0, [rte-pilot-original.yaml](configs/rte-pilot-original.yaml), BERT-large, **20 эпох / 3120 шагов**, batch 16, FP32. Итоговая dev accuracy восстановленного best-dev checkpoint — **70.40% (195/277)**; выбран checkpoint шага **2236**. Accuracy последнего состояния на шаге 3120 — **68.23% (189/277)**. Время процесса — **3 ч 28 мин 57 с**. [Машиночитаемый результат](results/pilot/original-seed0/result.json), [сводка](results/pilot/original-seed0/summary.md), [полные оценки](results/pilot/original-seed0/eval_results.tsv). Это один пилотный seed, не оценка среднего или разброса основной серии. Промежуточные снимки сохранены отдельно.
 
 | Поле | Зафиксировано |
 | --- | --- |
@@ -41,7 +41,7 @@ Mosbach, Andriushchenko, Klakow. *On the Stability of Fine-tuning BERT: Misconce
 | GPU | RTX 3070 Ti, 8192 MiB; FP32, batch 16 / accumulation 1 |
 | Версии данных/весов | URL, revision и SHA-256: [asset-sources.json](results/pilot/asset-sources.json), [weights-verified.json](results/pilot/weights-verified.json), [протокол](docs/PROTOCOL.md) |
 | Артефакты | `results/pilot/original-seed0/metadata.json`, `summary.md`; stdout/stderr локально, небольшие TSV экспортируются в snapshots |
-| Снимок пилота, 23:51 MSK | Последняя accuracy 68.59% (3016), best observed 70.40% (2236); 3040/3120 залогированных шагов; прошло около 3 ч 22 мин. Итоговая оценка восстановленного checkpoint и peak allocated/reserved CUDA memory ещё не получены |
+| Итог пилота | Успех; восстановленный best-dev checkpoint: 70.40%; 20 эпох / 3120 шагов; время 12536.94 с; peak CUDA allocated 11172861952 bytes, reserved 14881390592 bytes (показания аллокатора, не физическая VRAM карты) |
 
 Классификация — **«запуск с правками окружения и путей»**. Исходный Docker не запускался: Docker/WSL недоступны из песочницы. Использован portable Python и другой PyTorch; launcher сокращает выходные имена Windows и импортирует read-only upstream. Данные/веса локальные. Модель, optimizer, batch, эпохи и LR сохранены. В исходном пилотном YAML W&B выключен; сохраняются TSV/stdout/stderr. Timer включает загрузку локальных весов, обучение, оценку и checkpoints, но не установку/скачивание; CUDA allocator memory не равна полному потреблению VRAM.
 

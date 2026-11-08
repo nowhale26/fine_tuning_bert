@@ -1,5 +1,5 @@
 {
-  "status": "running",
+  "status": "completed",
   "started_at_utc": "2026-11-08T17:29:21.877879+00:00",
   "pid": 16140,
   "seed": 0,
@@ -24,5 +24,10 @@
     "train.tsv": "41e3a9b063433392343fad9e962cf2f58b681c78d8f71592f4186f0837246c5c",
     "dev.tsv": "80230dfa1347282e7b532b06a1004a76a710087541189bf874223ddf0e3819fb"
   },
-  "upstream_sha": "3cf27e8667aee9d1c822d747c63ce331b231f283"
+  "upstream_sha": "3cf27e8667aee9d1c822d747c63ce331b231f283",
+  "finished_at_utc": "2026-11-08T20:58:19.684191+00:00",
+  "elapsed_seconds": 12536.9380517,
+  "exit_code": 0,
+  "peak_allocated_bytes": 11172861952,
+  "peak_reserved_bytes": 14881390592
 }
